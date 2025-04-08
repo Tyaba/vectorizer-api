@@ -31,7 +31,7 @@ variable "min_instances" {
 variable "max_instances" {
   description = "最大インスタンス数"
   type        = number
-  default     = 100
+  default     = 4
 }
 
 variable "memory" {
@@ -44,6 +44,24 @@ variable "cpu" {
   description = "CPU割り当て"
   type        = string
   default     = "1"
+}
+
+variable "num_gpus" {
+  description = "GPU数"
+  type        = number
+  default     = 0
+}
+
+variable "startup_cpu_boost" {
+  description = "起動時のCPUブースト"
+  type        = bool
+  default     = false
+}
+
+variable "accelerator" {
+  description = "gpuの種類"
+  type        = string
+  default     = "nvidia-l4"
 }
 
 variable "timeout_seconds" {
@@ -65,7 +83,7 @@ variable "port" {
 }
 
 variable "short_sha" {
-  description = "デプロイするコミットのSHA（指定されない場合は現在のタイムスタンプが使用されます）"
+  description = "デプロイするコミットのSHA"
   type        = string
   default     = ""
 }

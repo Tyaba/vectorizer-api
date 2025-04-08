@@ -1,8 +1,7 @@
 module "artifact_registry" {
   source = "../../modules/artifact_registry"
   location = var.region
-  repository_id = var.service_name
-  description = "vectorizer-apiのリポジトリ"
+  description = "docker imagesが置かれるリポジトリ"
 }
 
 module "builder_service_account" {
@@ -39,3 +38,19 @@ module "cloud_build_trigger" {
   description = "Vectorizer APIのCloud Buildトリガー"
 }
 
+module "vectorizer_cloud_run" {
+  source = "../../modules/cloud_run"
+  project_id = var.project_id
+  service_name = var.service_name
+  short_sha = var.short_sha
+  region = var.region
+  image = "${var.region}-docker.pkg.dev/${var.project_id}/containers/${var.service_name}:latest"
+  num_gpus = 1
+  accelerator = "nvidia-l4"
+  min_instances = 0
+  max_instances = 4
+  memory = "32Gi"
+  cpu = "8"
+  startup_cpu_boost = false
+  description = "Vectorizer APIのCloud Runサービス"
+}

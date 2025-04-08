@@ -25,6 +25,12 @@ variable "github_repo" {
   default     = "vectorizer-api"
 }
 
+variable "short_sha" {
+  description = "デプロイするコミットのSHA"
+  type        = string
+  default     = ""
+}
+
 variable "branch_regex" {
   description = "GitHubのリポジトリのブランチ名"
   type        = string

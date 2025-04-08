@@ -1,7 +1,7 @@
 substitutions:
   _SERVICE_NAME: vectorizer-api
   _GOOGLE_CLOUD_REGION: us-central1
-  _IMAGE_NAME: ${_GOOGLE_CLOUD_REGION}-docker.pkg.dev/${PROJECT_ID}/${_SERVICE_NAME}
+  _IMAGE_NAME: ${_GOOGLE_CLOUD_REGION}-docker.pkg.dev/${PROJECT_ID}/containers/${_SERVICE_NAME}
   _ENV: dev
 
 steps:
@@ -43,7 +43,7 @@ steps:
     script: |
       #!/usr/bin/env sh
       terraform init -input=false
-      terraform apply -auto-approve -input=false -var="short_sha=${SHORT_SHA}"
+      terraform apply -auto-approve -input=false -var="region=${_GOOGLE_CLOUD_REGION}" -var="project_id=${PROJECT_ID}" -var="service_name=${_SERVICE_NAME}" -var="short_sha=${SHORT_SHA}"
     dir: infra/envs/${_ENV}
 
 options:
