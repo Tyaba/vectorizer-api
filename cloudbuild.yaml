@@ -2,6 +2,7 @@ substitutions:
   _SERVICE_NAME: vectorizer-api
   _GOOGLE_CLOUD_REGION: us-central1
   _IMAGE_NAME: ${_GOOGLE_CLOUD_REGION}-docker.pkg.dev/${PROJECT_ID}/${_SERVICE_NAME}
+  _ENV: dev
 
 steps:
   - id: "pull"
@@ -36,14 +37,14 @@ steps:
       docker push ${_IMAGE_NAME}:latest
       docker push ${_IMAGE_NAME}:${SHORT_SHA}
 
-  # - id: "terraform-apply"
-  #   name: "hashicorp/terraform:1.5.6"
-  #   waitFor: ["push"]
-  #   script: |
-  #     #!/usr/bin/env sh
-  #     terraform init -input=false
-  #     terraform apply -auto-approve -input=false -var="short_sha=${SHORT_SHA}"
-  #   dir: infra/envs/${_ENV}
+  - id: "terraform-apply"
+    name: "hashicorp/terraform:1.5.6"
+    waitFor: ["push"]
+    script: |
+      #!/usr/bin/env sh
+      terraform init -input=false
+      terraform apply -auto-approve -input=false -var="short_sha=${SHORT_SHA}"
+    dir: infra/envs/${_ENV}
 
 options:
   logging: CLOUD_LOGGING_ONLY

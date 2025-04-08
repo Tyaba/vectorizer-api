@@ -31,6 +31,11 @@ module "cloud_build_trigger" {
   github_owner = var.github_owner
   github_repo = var.github_repo
   branch_regex = var.branch_regex
+  substitutions = {
+    _SERVICE_NAME = var.service_name
+    _GOOGLE_CLOUD_REGION = var.region
+    _ENV = "dev"
+  }
   description = "Vectorizer APIのCloud Buildトリガー"
 }
 
