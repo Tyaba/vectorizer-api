@@ -17,6 +17,7 @@ module "builder_service_account" {
     "roles/cloudbuild.builds.editor",
     "roles/logging.logWriter",
     "roles/run.admin",
+    "roles/artifactregistry.admin",
     ]
 }
 
