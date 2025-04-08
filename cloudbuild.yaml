@@ -23,7 +23,11 @@ steps:
     script: |
       #!/usr/bin/env bash
       set -eu
-      docker build -t ${_IMAGE_NAME}:latest -t ${_IMAGE_NAME}:${SHORT_SHA} .
+      docker build \
+        -t ${_IMAGE_NAME}:latest \
+        -t ${_IMAGE_NAME}:${SHORT_SHA} \
+        --cache-from ${_IMAGE_NAME}:latest \
+        .
 
   # chisatoのtag&push
   - id: "push"
