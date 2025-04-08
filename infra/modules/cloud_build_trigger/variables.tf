@@ -8,11 +8,6 @@ variable "project_id" {
   type        = string
 }
 
-variable "region" {
-  description = "デプロイするリージョン"
-  type        = string
-}
-
 variable "trigger_name" {
   description = "Cloud Buildトリガー名"
   type        = string
@@ -20,6 +15,16 @@ variable "trigger_name" {
 
 variable "description" {
   description = "トリガーの説明"
+  type        = string
+}
+
+variable "service_account_id" {
+  description = "builderに付与するサービスアカウントID"
+  type        = string
+}
+
+variable "repository_region" {
+  description = "リポジトリのリージョン"
   type        = string
 }
 
@@ -36,7 +41,6 @@ variable "github_repo" {
 variable "branch_regex" {
   description = "トリガーするブランチの正規表現"
   type        = string
-  default     = "^main$"
 }
 
 variable "substitutions" {

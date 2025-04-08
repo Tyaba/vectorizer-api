@@ -12,3 +12,21 @@ variable "project_id" {
   description = "プロジェクトID"
   type        = string
 }
+
+variable "github_owner" {
+  description = "GitHubのリポジトリの所有者"
+  type        = string
+  default     = "Tyaba"
+}
+
+variable "github_repo" {
+  description = "GitHubのリポジトリ名"
+  type        = string
+  default     = "vectorizer-api"
+}
+
+variable "branch_regex" {
+  description = "GitHubのリポジトリのブランチ名"
+  type        = string
+  default     = "^main$"
+}
