@@ -1,0 +1,2 @@
+# vectorizer-api
+デフォルトのワークスペース
