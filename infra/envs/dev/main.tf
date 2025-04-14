@@ -1,6 +1,7 @@
 module "artifact_registry" {
   source = "../../modules/artifact_registry"
   location = var.region
+  repository_id = var.service_name
   description = "docker imagesが置かれるリポジトリ"
 }
 
