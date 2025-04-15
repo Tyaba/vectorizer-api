@@ -3,8 +3,7 @@ from injector import inject
 from vectorizer_api.domain.factory.vectorizer_factory import (
     VectorizerFactoryInterface,
 )
-from vectorizer_api.domain.model.vectorize import VectorizeRequest, VectorizeResponse
-from vectorizer_api.domain.service.vectorizer import VectorizeInput
+from vectorizer_api.domain.model.vectorize import VectorizeRequest, VectorizeResponse, VectorizeInput
 from vectorizer_api.utils.image import base642pil
 
 

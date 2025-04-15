@@ -1,11 +1,7 @@
 from abc import ABC, abstractmethod
-from enum import Enum
 
-from src.vectorizer_api.domain.service.vectorizer import Vectorizer
-
-
-class VectorizerType(Enum):
-    IMAGE = "image"
+from vectorizer_api.domain.model.vectorize import VectorizerType
+from vectorizer_api.domain.service.vectorizer import Vectorizer
 
 
 class VectorizerFactoryInterface(ABC):
