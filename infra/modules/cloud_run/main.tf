@@ -4,6 +4,7 @@ resource "google_cloud_run_v2_service" "service" {
   project  = var.project_id
   deletion_protection = false
   template {
+    timeout = var.timeout_seconds
     max_instance_request_concurrency = var.concurrency
     containers {
       image = var.image
