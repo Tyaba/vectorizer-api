@@ -20,7 +20,7 @@ class DreamSim(Vectorizer):
         self.validate_input(vectorize_input)
 
         _image_tensors = [self.preprocess(image) for image in vectorize_input.images]
-        images_tensor = torch.cat(_image_tensors, dim=0)
+        images_tensor = torch.cat(_image_tensors, dim=0).to(self.device)
         embeddings = self.model.embed(images_tensor)
         vectors = embeddings.cpu().numpy().tolist()
         return VectorizeOutput(vectors=vectors)

@@ -18,6 +18,10 @@ depends = ["lint", "format"]
 run = "uv run python -m pytest tests"
 depends = ["sync"]
 
+[tasks.run]
+run = "uv run gunicorn -c src/vectorizer_api/gunicorn.conf.py"
+depends = ["sync"]
+
 [tasks.download-stubs]
 run = "uv run mypy --install-types --non-interactive"
 
