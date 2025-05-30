@@ -50,7 +50,7 @@ module "vectorizer_cloud_run" {
   num_gpus = 1
   accelerator = "nvidia-l4"
   min_instances = 0
-  max_instances = 4
+  max_instances = 8
   memory = "32Gi"
   cpu = "8"
   startup_cpu_boost = false
